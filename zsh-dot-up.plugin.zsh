@@ -30,9 +30,5 @@ function _dot_up_move() {
         fi
 }
 
-zle -N _dot_up_show_destination
-zle -N _dot_up_move
-
 zle -N zle-line-pre-redraw _dot_up_show_destination
-
 zle -N zle-line-finish _dot_up_move

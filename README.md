@@ -16,6 +16,15 @@ Just type `...`, `....`, `.....`, etc., in your terminal. You'll see the destina
 
 ![Screenshot](images/screenshot.png)
 
+## Highlighting
+
+`zsh-dot-up` does not provide highlighting by default. If you want to highlight the `...`, `....`, `.....`, etc., commands, you can use the following settings with [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+
+```zsh
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(regexp)
+ZSH_HIGHLIGHT_REGEXP+=('^\s*(\.){2,}$' fg=green)
+```
+
 ## License
 
 Copyright (C) 2024 Hiroki Tokunaga

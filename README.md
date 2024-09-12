@@ -14,6 +14,8 @@ zplug "toku-sa-n/zsh-dot-up"
 
 Just type `...`, `....`, `.....`, etc., in your terminal. You'll see the destination directory below the command line.
 
+![Screenshot](images/screenshot.png)
+
 ## License
 
 Copyright (C) 2024 Hiroki Tokunaga

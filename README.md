@@ -12,7 +12,7 @@ zplug "toku-sa-n/zsh-dot-up"
 
 ## Usage
 
-Just type `...`, `....`, `.....`, etc., in your terminal. You'll see the destination directory below the command line.
+Just type `...`, `....`, `.....`, etc., in your terminal. You'll see the destination directory below the command line. Pressing the Enter key will navigate to the directory.
 
 ![Screenshot](images/screenshot.png)
 

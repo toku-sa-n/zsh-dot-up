@@ -1,4 +1,4 @@
-local dots_regex="^\s*(\.){2,}\s*$"
+local dots_regex='^\s*(\.){2,}\s*$'
 
 function _dot_up_convert_to_slash_dots() {
         local dots="${BUFFER//[[:space:]]}"

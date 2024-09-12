@@ -14,7 +14,7 @@ function _dot_up_convert_to_slash_dots() {
 }
 
 function _dot_up_show_destination() {
-        if [[ "$BUFFER" =~ "$RE" ]]
+        if [[ "$BUFFER" =~ $RE ]]
         then
                 local absolute_path=$(readlink -f $(_dot_up_convert_to_slash_dots))
                 zle -M "Destination: $absolute_path"
@@ -24,7 +24,7 @@ function _dot_up_show_destination() {
 }
 
 function _dot_up_move() {
-        if [[ "$BUFFER" =~ "$RE" ]]
+        if [[ "$BUFFER" =~ $RE ]]
         then
                 BUFFER="cd $(_dot_up_convert_to_slash_dots)"
         fi

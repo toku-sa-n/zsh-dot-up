@@ -18,7 +18,7 @@ Just type `...`, `....`, `.....`, etc., in your terminal. You'll see the destina
 
 ## Highlighting
 
-`zsh-dot-up` does not provide highlighting by default. If you want to highlight the `...`, `....`, `.....`, etc., commands, install [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), and write the following code in your `.zshrc`.
+`zsh-dot-up` does not provide highlighting by default. If you want to highlight `...`, `....`, `.....`, etc., commands, install [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), and write the following code in your `.zshrc`.
 
 ```zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(regexp)

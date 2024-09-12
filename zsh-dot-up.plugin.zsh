@@ -1,3 +1,5 @@
+local dots_regex="^\s*(\.){2,}\s*$"
+
 function _dot_up_convert_to_slash_dots() {
         local dots="${BUFFER//[[:space:]]}"
         local count="${#dots}"
@@ -12,7 +14,7 @@ function _dot_up_convert_to_slash_dots() {
 }
 
 function _dot_up_show_destination() {
-        if [[ "$BUFFER" =~ "^\s*(\.){2,}\s*$" ]]
+        if [[ "$BUFFER" =~ $dots_regex ]]
         then
                 local absolute_path=$(readlink -f $(_dot_up_convert_to_slash_dots))
                 zle -M "Destination: $absolute_path"
@@ -22,7 +24,7 @@ function _dot_up_show_destination() {
 }
 
 function _dot_up_move() {
-        if [[ "$BUFFER" =~ "^\s*(\.){2,}\s*$" ]]
+        if [[ "$BUFFER" =~ $dots_regex ]]
         then
                 BUFFER="cd $(_dot_up_convert_to_slash_dots)"
         fi

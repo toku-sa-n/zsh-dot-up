@@ -1,4 +1,5 @@
 dot_up__regex='^\s*(\.){2,}\s*$'
+dot_up__showing=false
 
 function _dot_up_convert_to_slash_dots() {
         local dots="${BUFFER//[[:space:]]}"
@@ -18,8 +19,11 @@ function _dot_up_show_destination() {
         then
                 local absolute_path=$(readlink -f $(_dot_up_convert_to_slash_dots))
                 zle -M "Destination: $absolute_path"
-        else
+                dot_up__showing=true
+        elif [ "$dot_up__showing" = true ]
+        then
                 zle -M ""
+                dot_up__showing=false
         fi
 }
 

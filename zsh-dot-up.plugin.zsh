@@ -1,6 +1,5 @@
 dot_up__regex='^\s*(\.){2,}\s*$'
 dot_up__showing=false
-dot_up__hook_strategy=${dot_up__hook_strategy-}
 
 function _dot_up_should_skip() {
         if (( ${+widgets} && ${+widgets[double-dot-expand]} ))
@@ -85,17 +84,14 @@ function _dot_up_try_hook_registration() {
         return 0
 }
 
-if [ -z "$dot_up__hook_strategy" ]
-then
-        zle -N _dot_up_show_destination
-        zle -N _dot_up_move
+zle -N _dot_up_show_destination
+zle -N _dot_up_move
 
-        if _dot_up_try_hook_registration
-        then
-                dot_up__hook_strategy=hook
-        else
-                zle -N zle-line-pre-redraw _dot_up_show_destination
-                zle -N zle-line-finish _dot_up_move
-                dot_up__hook_strategy=fallback
-        fi
+if _dot_up_try_hook_registration
+then
+        dot_up__hook_strategy=hook
+else
+        zle -N zle-line-pre-redraw _dot_up_show_destination
+        zle -N zle-line-finish _dot_up_move
+        dot_up__hook_strategy=fallback
 fi

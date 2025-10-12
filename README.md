@@ -18,7 +18,7 @@ Just type `...`, `....`, `.....`, etc., in your terminal. You'll see the destina
 
 ## Compatibility
 
-`zsh-dot-up` hooks into the `line-finish` and `line-pre-redraw` widgets. Plugins that redefine those widgets or offer their own multi-dot expansion (for example, Zim's `input` module when `double-dot-expand` is enabled) can conflict and prevent `zsh-dot-up` from running. If you are using such a plugin, disable its conflicting feature or ensure `zsh-dot-up` is sourced after it.
+`zsh-dot-up` attaches to the `line-finish` and `line-pre-redraw` widgets via `add-zle-hook-widget`, so it plays nicely with frameworks such as Zim's `input` module. If another plugin replaces those widgets without using hooks, whichever one runs last will win—reorder your sourcing or disable the other plugin if you hit that situation.
 
 ## Highlighting
 

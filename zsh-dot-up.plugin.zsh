@@ -87,11 +87,8 @@ function _dot_up_try_hook_registration() {
 zle -N _dot_up_show_destination
 zle -N _dot_up_move
 
-if _dot_up_try_hook_registration
+if ! _dot_up_try_hook_registration
 then
-        dot_up__hook_strategy=hook
-else
         zle -N zle-line-pre-redraw _dot_up_show_destination
         zle -N zle-line-finish _dot_up_move
-        dot_up__hook_strategy=fallback
 fi

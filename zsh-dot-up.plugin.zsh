@@ -1,20 +1,6 @@
 dot_up__regex='^\s*(\.){2,}\s*$'
 dot_up__showing=false
 
-function _dot_up_should_skip() {
-        if (( ${+widgets} && ${+widgets[double-dot-expand]} ))
-        then
-                return 0
-        fi
-
-        if zstyle -t ':zim:input' double-dot-expand 2>/dev/null
-        then
-                return 0
-        fi
-
-        return 1
-}
-
 function _dot_up_convert_to_slash_dots() {
         local dots="${BUFFER//[[:space:]]}"
         local count="${#dots}"
@@ -29,16 +15,6 @@ function _dot_up_convert_to_slash_dots() {
 }
 
 function _dot_up_show_destination() {
-        if _dot_up_should_skip
-        then
-                if [ "$dot_up__showing" = true ]
-                then
-                        zle -M ""
-                        dot_up__showing=false
-                fi
-                return
-        fi
-
         if [[ "$BUFFER" =~ $dot_up__regex ]]
         then
                 local absolute_path=$(readlink -f "$(_dot_up_convert_to_slash_dots)")
@@ -52,11 +28,6 @@ function _dot_up_show_destination() {
 }
 
 function _dot_up_move() {
-        if _dot_up_should_skip
-        then
-                return
-        fi
-
         if [[ "$BUFFER" =~ $dot_up__regex ]]
         then
                 BUFFER="cd $(_dot_up_convert_to_slash_dots)"

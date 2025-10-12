@@ -16,6 +16,10 @@ Just type `...`, `....`, `.....`, etc., in your terminal. You'll see the destina
 
 ![Screenshot](images/screenshot.png)
 
+## Compatibility
+
+`zsh-dot-up` hooks into the `line-finish` and `line-pre-redraw` widgets. Plugins that redefine those widgets or offer their own multi-dot expansion (for example, Zim's `input` module when `double-dot-expand` is enabled) can conflict and prevent `zsh-dot-up` from running. If you are using such a plugin, disable its conflicting feature or ensure `zsh-dot-up` is sourced after it.
+
 ## Highlighting
 
 `zsh-dot-up` does not provide highlighting by default. If you want to highlight `...`, `....`, `.....`, etc., install [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), and write the following code in your `.zshrc`.

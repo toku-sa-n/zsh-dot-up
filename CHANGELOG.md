@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Show logical destinations without using `readlink -f`, preserving macOS compatibility, matching `cd` behavior, and avoiding side effects from user `chpwd` hooks.
+
 ## [0.1.2] - 2025-10-12
 
 ### Fixed

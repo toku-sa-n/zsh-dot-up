@@ -10,16 +10,36 @@ function _dot_up_convert_to_slash_dots() {
         do
                 target="$target/.."
         done
-
         echo "$target"
+}
+
+function _dot_up_calculate_destination() {
+        local dots="${BUFFER//[[:space:]]}"
+        local count="${#dots}"
+        local destination="$PWD"
+
+        local levels=$((count - 1))
+        local i
+        for ((i = 0; i < levels; i++))
+        do
+                destination="${destination:h}"
+        done
+
+        print -r -- "$destination"
 }
 
 function _dot_up_show_destination() {
         if [[ "$BUFFER" =~ $dot_up__regex ]]
         then
-                local absolute_path=$(readlink -f "$(_dot_up_convert_to_slash_dots)")
-                zle -M "Destination: $absolute_path"
-                dot_up__showing=true
+                local destination
+                if destination=$(_dot_up_calculate_destination)
+                then
+                        zle -M "Destination: $destination"
+                        dot_up__showing=true
+                else
+                        zle -M ""
+                        dot_up__showing=false
+                fi
         elif [ "$dot_up__showing" = true ]
         then
                 zle -M ""
